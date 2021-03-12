@@ -3,6 +3,9 @@
     <MenuBar/>
 
     <Carousel id="carousel"/>
+ 
+    <Dates/>
+    <Sermons/>
   </div>
 </template>
 
@@ -11,6 +14,8 @@
 import MenuBar from './MenuBar.vue'
 
 import Carousel from './Carousel.vue'
+import Sermons from './Sermons.vue'
+import Dates from './Dates.vue'
 export default {
   name: 'Homepage',
   props: {
@@ -18,7 +23,9 @@ export default {
   },
   components: {
     MenuBar,
-    Carousel
+    Carousel,
+    Sermons,
+    Dates
   }
 }
 </script>

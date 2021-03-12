@@ -1,6 +1,6 @@
 <template>
   <div class="sermons">
-    <h1>{{ msg }}</h1>
+    <h1>Featured Sermon</h1>
   
   </div>
 </template>

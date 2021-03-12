@@ -1,9 +1,7 @@
 <template>
    <div>
 
-    <div id="overlay">
-        <DeliveryOrPickup/>
-    </div>
+   
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -41,10 +39,10 @@
       </b-carousel-slide> 
     </b-carousel>
 
-    <p class="mt-4">
+ <!--   <p class="mt-4">
       Slide #: {{ slide }}<br>
       Sliding: {{ sliding }}
-    </p>
+    </p>-->
 
   </div>
 </template>
@@ -53,7 +51,7 @@
 
 <script>
 
-import DeliveryOrPickup from './DeliveryOrPickup.vue'
+
 
 
 export default {
@@ -62,7 +60,7 @@ export default {
     msg: String
   },
   components: {
-    DeliveryOrPickup
+
   }
 
 
