@@ -10,8 +10,9 @@
         <b-nav-item href="#">STORES</b-nav-item>
         <b-nav-item href="#">OFFERS</b-nav-item>
         <b-nav-item href="#">ABOUT US</b-nav-item>
-
-      </b-navbar-nav>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+        </b-navbar-nav>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">

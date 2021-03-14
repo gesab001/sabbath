@@ -9,7 +9,7 @@
        </select>
     </div>
     <div class="cardContainer" v-for="item in sabbaths" :key="item">
-        <router-link :to="{ name: 'Thumbnails', params: {date: item } }"><DateCard :message="item"/></router-link> 
+        <DateCard :message="item"/>
              
     </div>
   </div>
