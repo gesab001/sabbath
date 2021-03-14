@@ -1,34 +1,20 @@
 <template>
-  <div class="mainContainer">
-    <h1>{{selectedYear}}</h1>
-    <div>
-       <select v-model="selectedYear" v-on:change="changeSelectedYear($event)">
-          <option v-for="option in years" :key="option" v-bind:value="option">
-              {{option}}
-          </option>
-       </select>
-    </div>
-    <div class="cardContainer" v-for="item in sabbaths" :key="item">
-        <DateCard :message="item"/>
-             
-    </div>
+  <div class="container">
+    <h1>Thumbnails</h1>
+  
   </div>
 </template>
 
 <script>
-import DateCard from './DateCard.vue'
-
 export default {
-  name: 'Dates',
+  name: 'Thumbnails',
   props: {
     msg: String
   },
-  components: {
-    DateCard
-  },
+
   data() {
     return {
-      selectedYear: this.getCurrentYear(),
+      selectedYear: 2021,
       years: this.getYears(),
       sabbaths: []
     }
@@ -50,15 +36,12 @@ export default {
             years.push(year);
              
         }
-        return years.reverse();
+        return years;
 
      },
      generateSabbaths(year) {
         var d = new Date();
 	var now = new Date(year, 11, 31);
-        if (year==this.getCurrentYear()){
-           now = new Date();
-        }
 	var sabbathsOfTheYear = [];
 	for (d = new Date(year, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
              var dayoftheweek = new Date(d).getDay();
@@ -82,15 +65,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.mainContainer {
-  text-align: center;
-}
-.cardContainer {
-   display: inline-block;
-   background-color: blue;
-}
-
 h3 {
   margin: 40px 0 0;
 }
