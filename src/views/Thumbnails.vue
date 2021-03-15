@@ -2,25 +2,41 @@
   <div class="container">
     
      <h1>Sabbath {{ getDate() }} {{ getMonthName() }} {{ getYear() }}</h1>
+
+     <div class="thumbnail-container" v-for="item in items" :key="item.id">
+     
+       <a :href="item.productUrl" ><img class="thumbnail" :src="item.baseUrl"/></a>
+     
+     </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Thumbnails',
-  props: ['date'],
+  props: ['date', 'gapi'],
 
   data() {
     return {
-      selectedYear: 2021,
-      years: this.getYears(),
-      sabbaths: []
+      photoApi: Object,
+      items: [],
+      resource: {"filters":
+           {"dateFilter":
+             {"dates":[
+                        {"day": this.getDate(),
+                         "month": this.getMonthIndex(),
+                         "year": this.getYear()
+                        }
+                      ]
+              }
+           }
+        }
     }
   },
 
   created() {
+    this.makeRequest();
 
-  
  
   },
   methods: {
@@ -40,16 +56,32 @@ export default {
      },
      getDate() {
        return new Date(this.date).getDate();
-     }
-
-
-    
+     },
+     
+     makeRequest() {  
+          this.gapi.client.request({
+                'path': 'https://content-photoslibrary.googleapis.com/v1/mediaItems:search?alt=json&key=',
+                'method': 'POST',
+                'body': this.resource
+           }).then(response =>  (this.items = response.result.mediaItems))
+        
+     } 
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.thumbnail-container {
+    display: inline-block;
+}
+
+.thumbnail {
+  width: 304px;
+  height: 228px;
+  margin: 10px;
+}
 h3 {
   margin: 40px 0 0;
 }

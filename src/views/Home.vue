@@ -2,8 +2,8 @@
   <div class="home">
       <MenuBar/>
      <Carousel id="carousel"/> 
-     <Dates/>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+     <Dates :token="token" :gapi="gapi"/>
+
   </div>
 </template>
 
@@ -11,7 +11,6 @@
 // @ is an alias to /src
 import MenuBar from '@/components/MenuBar.vue'
 import Carousel from '@/components/Carousel.vue'
-import HelloWorld from '@/components/HelloWorld.vue'
 import Dates from '@/components/Dates.vue'
 
 export default {
@@ -19,8 +18,45 @@ export default {
   components: {
     MenuBar,
     Carousel,
-    HelloWorld,
     Dates
+  }, 
+  
+  data() {
+     return {
+        token: "",
+        gapi: Object
+     }
+  },
+  
+  created() {
+    this.init();
+
+  },
+  methods: {
+       init() {
+        this.$gapi.getGapiClient().then((gapi) => {
+            this.login(gapi);
+            this.gapi = gapi;         
+        })
+      },
+      
+      login(gapi){
+         gapi.auth2.getAuthInstance().signIn().then((response) =>{
+                       
+                        this.setToken(response);
+                               
+
+           });
+           
+      },
+      
+      setToken(response){
+            this.token = response.uc.access_token;
+      },
+      
+      getToken(){
+         return this.token;
+      }
   }
 }
 </script>

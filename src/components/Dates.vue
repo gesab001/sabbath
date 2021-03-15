@@ -1,6 +1,7 @@
 <template>
   <div class="mainContainer">
     <h1>{{selectedYear}}</h1>
+    <h2>{{token}}</h2>
     <div>
        <select v-model="selectedYear" v-on:change="changeSelectedYear($event)">
           <option v-for="option in years" :key="option" v-bind:value="option">
@@ -9,7 +10,7 @@
        </select>
     </div>
     <div class="cardContainer" v-for="item in sabbaths" :key="item">
-        <router-link :to="{ name: 'Thumbnails', params: {date: item } }"><DateCard :message="item"/></router-link> 
+        <router-link :to="{ name: 'Thumbnails', params: {date: item, gapi:gapi } }"><DateCard :message="item"/></router-link> 
              
     </div>
   </div>
@@ -21,7 +22,9 @@ import DateCard from './DateCard.vue'
 export default {
   name: 'Dates',
   props: {
-    msg: String
+    msg: String,
+    token: String,
+    gapi: Object
   },
   components: {
     DateCard
@@ -37,7 +40,6 @@ export default {
   created() {
 
     this.generateSabbaths(this.selectedYear);
- 
   },
   methods: {
      getCurrentYear(){
