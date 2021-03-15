@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'DateCard',
-  props: {message: String},
+  props: {message: Object},
   methods: {
      getYear(){
        return  new Date(this.message).getFullYear();

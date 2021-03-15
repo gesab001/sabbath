@@ -63,7 +63,7 @@ export default {
                 'path': 'https://content-photoslibrary.googleapis.com/v1/mediaItems:search?alt=json&key=',
                 'method': 'POST',
                 'body': this.resource
-           }).then(response =>  (this.items = response.result.mediaItems))
+           }).then(response =>  (this.items = response.result.mediaItems, console.log(this.items)))
         
      } 
   }

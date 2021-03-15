@@ -1,5 +1,6 @@
 <template>
   <div class="mainContainer">
+    <Carousel id="carousel"/> 
     <h1>{{selectedYear}}</h1>
     <h2>{{token}}</h2>
     <div>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import Carousel from '@/components/Carousel.vue'
 import DateCard from './DateCard.vue'
 
 export default {
@@ -27,7 +29,8 @@ export default {
     gapi: Object
   },
   components: {
-    DateCard
+    DateCard,
+    Carousel
   },
   data() {
     return {
