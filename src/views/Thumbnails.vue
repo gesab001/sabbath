@@ -4,9 +4,9 @@
      <h1>Sabbath {{ getDate() }} {{ getMonthName() }} {{ getYear() }}</h1>
 
      <div class="thumbnail-container" v-for="item in items" :key="item.id">
-     
-       <a :href="item.productUrl" ><img class="thumbnail" :src="item.baseUrl"/></a>
-     
+   
+       <router-link :to="{ name: 'Slideshow', params: {items: items } }"><img class="thumbnail" :src="item.baseUrl"/></router-link> 
+
      </div>
   </div>
 </template>
