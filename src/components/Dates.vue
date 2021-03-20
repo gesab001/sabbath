@@ -11,6 +11,8 @@
        </select>
     </div>
     <div class="cardContainer" v-for="item in sabbaths" :key="item">
+   
+
         <router-link :to="{ name: 'Thumbnails', params: {date: item, gapi:gapi } }"><DateCard :message="item"/></router-link> 
              
     </div>
